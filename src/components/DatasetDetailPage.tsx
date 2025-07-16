@@ -1,16 +1,34 @@
 import React from 'react';
 import { ArrowLeft, Award, CheckCircle, Target } from 'lucide-react';
+import { PieChart as RePieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-// 简单内联 PieChart
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1', '#a4de6c', '#d0ed57'];
+
 const PieChart = ({ data, title }: { data: any[]; title: string }) => (
   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center">
-    <div className="w-24 h-24 bg-gray-100 rounded-full mb-4 flex items-center justify-center text-gray-400">PieChart</div>
     <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-    <ul className="text-sm text-gray-600">
-      {data.map((item, idx) => (
-        <li key={idx}>{item.label}: {item.value}</li>
-      ))}
-    </ul>
+    <div style={{ width: 200, height: 200 }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <RePieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="label"
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            label
+          >
+            {data.map((_: any, index: number) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </RePieChart>
+      </ResponsiveContainer>
+    </div>
   </div>
 );
 
@@ -113,8 +131,8 @@ const DatasetDetailPage = ({
               <MetricBar 
                 key={index}
                 metric={metric.metric}
-                average={metric.average}
-                top={metric.top}
+                average={metric.average * 20}  // 转换为百分比
+                top={metric.top * 20}          // 转换为百分比
               />
             ))}
           </div>
