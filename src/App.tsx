@@ -411,12 +411,14 @@ function App() {
         <div className="bg-blue-600 h-3 rounded-full relative" style={{ width: `${average}%` }}>
           <div 
             className="absolute top-0 right-0 w-1 h-3 bg-green-500 rounded-r-full"
-            style={{ right: `${5 - top}%` }}
+            style={{ right: `${100 - top}%` }}
           ></div>
         </div>
       </div>
       <div className="flex justify-between text-xs text-gray-500">
-        <span>平均: {average}</span>
+        <span>平均: {average}%</span>
+        <span>0%</span>
+        <span>100%</span>
       </div>
     </div>
   );
@@ -671,8 +673,8 @@ function App() {
                 <MetricBar 
                   key={index}
                   metric={metric.metric}
-                  average={metric.average}
-                  top={metric.top}
+                  average={metric.average * 20}  // 转换为百分比
+                  top={metric.top * 20}          // 转换为百分比
                 />
               ))}
             </div>
