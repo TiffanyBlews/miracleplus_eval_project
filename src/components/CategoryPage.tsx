@@ -1,26 +1,14 @@
 import React from 'react';
 import { Brain, Zap } from 'lucide-react';
+import datasets from '../datasets';
 
-interface Dataset {
-  id: string;
-  name: string;
-  description: string;
-  samples: number;
+interface CategoryPageProps {
   category: 'basic' | 'agent';
-  taskType: string;
-  difficulty: string;
-  metrics: string[];
+  setSelectedDataset: (id: string) => void;
 }
 
-const CategoryPage = ({
-  category,
-  datasets,
-  setSelectedDataset,
-}: {
-  category: 'basic' | 'agent';
-  datasets: Dataset[];
-  setSelectedDataset: (id: string) => void;
-}) => {
+export default function CategoryPage({ category, setSelectedDataset }: CategoryPageProps) {
+  const categoryDatasets = datasets.filter(d => d.category === category);
   const categoryTitle = category === 'basic' ? '基础能力评测' : 'Agent能力评测';
   const categoryIcon = category === 'basic' ? Brain : Zap;
   const categoryColor = category === 'basic' ? 'blue' : 'purple';
@@ -34,9 +22,8 @@ const CategoryPage = ({
         })}
         <h1 className="text-3xl font-bold text-gray-900">{categoryTitle}</h1>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {datasets.map((dataset) => (
+        {categoryDatasets.map((dataset) => (
           <div
             key={dataset.id}
             className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all duration-200 cursor-pointer"
@@ -77,6 +64,4 @@ const CategoryPage = ({
       </div>
     </div>
   );
-};
-
-export default CategoryPage; 
+} 

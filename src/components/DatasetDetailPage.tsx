@@ -1,74 +1,32 @@
 import React from 'react';
+import datasets from '../datasets';
+import PieChart from './PieChart';
+import MetricBar from './MetricBar';
+import OverviewSection from './OverviewSection';
 import { ArrowLeft, Award, CheckCircle, Target } from 'lucide-react';
-import { PieChart as RePieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1', '#a4de6c', '#d0ed57'];
-
-const PieChart = ({ data, title }: { data: any[]; title: string }) => (
-  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-center">
-    <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-    <div style={{ width: 200, height: 200 }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <RePieChart>
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="label"
-            cx="50%"
-            cy="50%"
-            outerRadius={80}
-            fill="#8884d8"
-            label
-          >
-            {data.map((_: any, index: number) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend />
-        </RePieChart>
-      </ResponsiveContainer>
-    </div>
-  </div>
-);
-
-// 简单内联 MetricBar
-const MetricBar = ({ metric, average, top }: { metric: string; average: number; top: number }) => (
-  <div>
-    <div className="flex justify-between text-sm text-gray-700 mb-1">
-      <span>{metric}</span>
-      <span>Top: {top}% / Avg: {average}%</span>
-    </div>
-    <div className="w-full bg-gray-200 rounded-full h-2">
-      <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${top}%` }} />
-    </div>
-  </div>
-);
-
-const DatasetDetailPage = ({
-  dataset,
-  leaderboard,
-  caseStudies,
-  setSelectedDataset,
-  setActiveTab,
-}: {
-  dataset: any;
-  leaderboard: any[];
-  caseStudies: any[];
+interface DatasetDetailPageProps {
+  datasetId: string;
   setSelectedDataset: (id: string | null) => void;
-  setActiveTab: (tab: string) => void;
-}) => {
+}
+
+export default function DatasetDetailPage({ datasetId, setSelectedDataset }: DatasetDetailPageProps) {
+  const dataset = datasets.find(d => d.id === datasetId);
   if (!dataset) return null;
+
+  // 排行榜数据
+  const leaderboard = dataset.detailedResults?.rankings || [];
+  // 案例分析
+  const caseStudies = dataset.focusAnalysis?.cases || [];
+  // overview
+  const overview = dataset.backgroundInfo?.overview;
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center space-x-4">
         <button
-          onClick={() => {
-            setSelectedDataset(null);
-            setActiveTab(dataset.category);
-          }}
+          onClick={() => setSelectedDataset(null)}
           className="text-gray-500 hover:text-gray-700"
         >
           <ArrowLeft size={24} />
@@ -78,8 +36,7 @@ const DatasetDetailPage = ({
           <p className="text-gray-600 mt-2">{dataset.description}</p>
         </div>
       </div>
-
-      {/* Dataset Overview */}
+      {/* 数据集概览 */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">数据集概览</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -113,32 +70,21 @@ const DatasetDetailPage = ({
           </div>
         </div>
       </div>
-
+      {/* overview 能力分布 */}
+      {overview && <OverviewSection overview={overview} />}
       {/* Data Visualization */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <PieChart 
-          data={dataset.chartData.difficultyDistribution} 
-          title="难度分布" 
-        />
-        <PieChart 
-          data={dataset.chartData.taskTypeDistribution} 
-          title="任务类型分布" 
-        />
+        <PieChart data={dataset.chartData.difficultyDistribution} title="难度分布" />
+        <PieChart data={dataset.chartData.taskTypeDistribution} title="任务类型分布" />
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">性能指标</h3>
           <div className="space-y-4">
-            {dataset.chartData.performanceMetrics.map((metric: any, index: number) => (
-              <MetricBar 
-                key={index}
-                metric={metric.metric}
-                average={metric.average * 20}  // 转换为百分比
-                top={metric.top * 20}          // 转换为百分比
-              />
+            {dataset.chartData.performanceMetrics.map((metric: { metric: string; average: number; top: number }, index: number) => (
+              <MetricBar key={index} metric={metric.metric} average={metric.average} top={metric.top} />
             ))}
           </div>
         </div>
       </div>
-
       {/* Leaderboard */}
       {leaderboard.length > 0 && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -156,14 +102,14 @@ const DatasetDetailPage = ({
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {leaderboard.map((model: any, index: number) => (
+                {leaderboard.map((model: { model: string; company: string; score: number }, index: number) => (
                   <tr key={model.model} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center">
                         {index < 3 && (
                           <Award className={`mr-2 ${
-                            index === 0 ? 'text-yellow-500' : 
-                            index === 1 ? 'text-gray-400' : 
+                            index === 0 ? 'text-yellow-500' :
+                            index === 1 ? 'text-gray-400' :
                             'text-orange-400'
                           }`} size={20} />
                         )}
@@ -188,28 +134,26 @@ const DatasetDetailPage = ({
           </div>
         </div>
       )}
-
-      {/* Case Studies */}
+      {/* 案例分析 */}
       {caseStudies.length > 0 && (
         <div className="mt-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">案例分析</h2>
           <div className="space-y-12">
-            {caseStudies.map((study: any) => (
-              <div key={study.id} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            {caseStudies.map((study: any, idx: number) => (
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <div className="w-full">
-                  <img src={study.imageUrl} alt={study.title} className="rounded-lg shadow-lg object-contain w-full" />
+                  {study.imageUrl && <img src={study.imageUrl} alt={study.title} className="rounded-lg shadow-lg object-contain w-full" />}
                 </div>
                 <div className="prose prose-lg max-w-none">
                   <h4 className="text-xl font-bold mb-4">{study.title}</h4>
-                  <p className="text-gray-600" style={{ whiteSpace: 'pre-wrap' }}>{study.content}</p>
+                  <p className="text-gray-600" style={{ whiteSpace: 'pre-wrap' }}>{study.analysis || study.description || study.content}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
-
-      {/* Conclusion for Financial Poster */}
+      {/* 结论与展望（仅金融海报） */}
       {dataset.id === 'financial-poster' && (
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-6">结论与展望</h2>
@@ -232,6 +176,4 @@ const DatasetDetailPage = ({
       )}
     </div>
   );
-};
-
-export default DatasetDetailPage; 
+} 
