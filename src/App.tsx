@@ -3,6 +3,9 @@ import { Menu, X, ChevronRight, BarChart3, Database, FileText, TrendingUp, Users
 import HomePage from './components/HomePage';
 import CategoryPage from './components/CategoryPage';
 import DatasetDetailPage from './components/DatasetDetailPage';
+import FinancialPosterPage from './components/FinancialPosterPage';
+import PalindromeSearchPage from './components/PalindromeSearchPage';
+import PdfParsingPage from './components/PdfParsingPage';
 import { financialPoster, financialPosterCaseStudies } from './datasets/financialPoster';
 import { palindromeSearch } from './datasets/palindromeSearch';
 import { pdfParsing } from './datasets/pdfParsing';
@@ -258,13 +261,13 @@ function App() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {selectedDataset ? (
-          <DatasetDetailPage
-            dataset={datasets.find(d => d.id === selectedDataset)}
-            leaderboard={mockLeaderboards[selectedDataset] || []}
-            caseStudies={caseStudies.filter(cs => cs.datasetId === selectedDataset)}
-            setSelectedDataset={setSelectedDataset}
-            setActiveTab={setActiveTab}
-          />
+          selectedDataset === 'financial-poster' ? (
+            <FinancialPosterPage setSelectedDataset={setSelectedDataset} />
+          ) : selectedDataset === 'palindrome-search' ? (
+            <PalindromeSearchPage setSelectedDataset={setSelectedDataset} />
+          ) : selectedDataset === 'pdf-parsing' ? (
+            <PdfParsingPage setSelectedDataset={setSelectedDataset} />
+          ) : null
         ) : activeTab === 'home' ? (
           <HomePage
             setActiveTab={setActiveTab}

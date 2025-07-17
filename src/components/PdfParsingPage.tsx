@@ -1,0 +1,15 @@
+import React from 'react';
+import { pdfParsing } from '../datasets/pdfParsing';
+
+export default function PdfParsingPage({ setSelectedDataset }: { setSelectedDataset: (id: string | null) => void }) {
+  return (
+    <div className="bg-white rounded-xl shadow p-6">
+      <button className="mb-4 text-blue-600" onClick={() => setSelectedDataset(null)}>
+        返回
+      </button>
+      <h2 className="text-2xl font-bold mb-2">{pdfParsing.name}</h2>
+      <p className="mb-4 text-gray-700">{pdfParsing.detailedDescription}</p>
+      {/* 这里可以根据 pdfParsing 的结构添加更多专属内容展示 */}
+    </div>
+  );
+} 

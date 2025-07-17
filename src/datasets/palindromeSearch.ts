@@ -35,11 +35,6 @@ export const palindromeSearch: Dataset = {
       { label: '中回文(11-25)', value: 40, color: '#8B5CF6' },
       { label: '长回文(26-50)', value: 20, color: '#F59E0B' },
       { label: '超长回文(50+)', value: 5, color: '#EF4444' }
-    ],
-    performanceMetrics: [
-      { metric: '检索准确率', average: 78.2, top: 92.1 },
-      { metric: '抗噪能力', average: 71.5, top: 86.3 },
-      { metric: '长文本理解', average: 74.8, top: 89.7 }
     ]
   }
 }; 

@@ -110,11 +110,6 @@ export const financialPoster: Dataset = {
       { label: '选择题', value: 58, color: '#3B82F6' },
       { label: '开放性问题', value: 38, color: '#8B5CF6' },
       { label: '填空题', value: 4, color: '#F59E0B' }
-    ],
-    performanceMetrics: [
-      { metric: '综合得分', average: 3.74, top: 4.60 },
-      { metric: '选择题表现', average: 4.22, top: 4.94 },
-      { metric: '开放性问题', average: 3.21, top: 4.24 }
     ]
   }
 };
