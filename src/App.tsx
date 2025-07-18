@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import HomePage from './components/HomePage';
 import CategoryPage from './components/CategoryPage';
-import DatasetDetailPage from './components/DatasetDetailPage';
+import PalindromeSearchPage from './components/PalindromeSearchPage';
+import FinancialPosterPage from './components/FinancialPosterPage';
+import PdfParsingPage from './components/PdfParsingPage';
 import { BarChart3, Brain, Zap, Menu, X } from 'lucide-react';
 
 function App() {
@@ -68,8 +70,12 @@ function App() {
       )}
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {selectedDataset ? (
-          <DatasetDetailPage datasetId={selectedDataset} setSelectedDataset={setSelectedDataset} />
+        {selectedDataset === 'palindrome-search' ? (
+          <PalindromeSearchPage setSelectedDataset={setSelectedDataset} />
+        ) : selectedDataset === 'financial-poster' ? (
+          <FinancialPosterPage setSelectedDataset={setSelectedDataset} />
+        ) : selectedDataset === 'pdf-parsing' ? (
+          <PdfParsingPage setSelectedDataset={setSelectedDataset} />
         ) : activeTab === 'home' ? (
           <HomePage setActiveTab={setActiveTab} />
         ) : activeTab === 'basic' ? (
