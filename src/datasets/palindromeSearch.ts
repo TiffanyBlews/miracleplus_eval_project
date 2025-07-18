@@ -35,6 +35,7 @@ export const palindromeSearch: Dataset = {
       { label: '中回文(11-25)', value: 40, color: '#8B5CF6' },
       { label: '长回文(26-50)', value: 20, color: '#F59E0B' },
       { label: '超长回文(50+)', value: 5, color: '#EF4444' }
-    ]
+    ],
+    performanceMetrics: []
   }
 }; 

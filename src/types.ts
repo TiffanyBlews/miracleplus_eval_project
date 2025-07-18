@@ -29,6 +29,7 @@ export interface Dataset {
   chartData: {
     difficultyDistribution: { label: string; value: number; color: string }[];
     taskTypeDistribution: { label: string; value: number; color: string }[];
+    performanceMetrics?: { metric: string; average: number; top: number }[];
   };
 }
 

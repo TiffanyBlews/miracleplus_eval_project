@@ -73,9 +73,32 @@ export default function DatasetDetailPage({ datasetId, setSelectedDataset }: Dat
       {/* overview 能力分布 */}
       {overview && <OverviewSection overview={overview} />}
       {/* Data Visualization */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
         <PieChart data={dataset.chartData.difficultyDistribution} title="难度分布" />
         <PieChart data={dataset.chartData.taskTypeDistribution} title="任务类型分布" />
+        {overview && (
+          <>
+            <PieChart 
+              data={overview.questionTypes.map((q: { type: string; count: number }, idx: number) => ({
+                label: q.type,
+                value: q.count,
+                color: ['#3B82F6', '#8B5CF6', '#F59E0B', '#10B981', '#EF4444'][idx % 5]
+              }))} 
+              title="题型分布" 
+            />
+            <PieChart 
+              data={overview.abilityDimensions.map((a: { dimension: string; count: number }, idx: number) => ({
+                label: a.dimension,
+                value: a.count,
+                color: ['#3B82F6', '#8B5CF6', '#F59E0B', '#10B981', '#EF4444'][idx % 5]
+              }))} 
+              title="能力维度分布" 
+            />
+          </>
+        )}
+      </div>
+      {/* 性能指标（如果有的话） */}
+      {dataset.chartData.performanceMetrics && dataset.chartData.performanceMetrics.length > 0 && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">性能指标</h3>
           <div className="space-y-4">
@@ -84,7 +107,7 @@ export default function DatasetDetailPage({ datasetId, setSelectedDataset }: Dat
             ))}
           </div>
         </div>
-      </div>
+      )}
       {/* Leaderboard */}
       {leaderboard.length > 0 && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
