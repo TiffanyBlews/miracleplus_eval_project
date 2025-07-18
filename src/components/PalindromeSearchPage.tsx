@@ -29,7 +29,6 @@ export default function PalindromeSearchPage({ setSelectedDataset }: { setSelect
         <b>实验材料：</b> 51组题目（共299个回文串），每题为三元组 (字符串长度, 回文串数量, 回文串长度)，<br/>
         字符串长度：{datasetStats.lengths.join('，')}，回文串数量：{datasetStats.nums.join('，')}，回文串长度：{datasetStats.pLens.join('，')}。<br/>
         排除三组：{datasetStats.removed.map(t => `(${t.join(',')})`).join('，')}。<br/>
-        <b>文本材料：</b>《模型上下文窗口噪声推理测试》
       </div>
       <div className="mb-4 text-gray-800">
         <b>任务说明：</b> 模型需在长文本噪声环境下，准确找出所有嵌入的回文串。<br/>
