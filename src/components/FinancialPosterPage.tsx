@@ -118,7 +118,7 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {leaderboard.map((model: { model: string; company: string; score: number }, index: number) => (
+                {leaderboard.map((model: { model: string; provider: string; score: number }, index: number) => (
                   <tr key={model.model} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center">
@@ -136,11 +136,11 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
                       <div className="font-medium text-gray-900">{model.model}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-gray-600">{model.company}</div>
+                      <div className="text-gray-600">{model.provider}</div>
                     </td>
                     <td className="px-6 py-4 text-center">
                       <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                        {model.score}%
+                        {(model.score * 20).toFixed(0)}%
                       </div>
                     </td>
                   </tr>
