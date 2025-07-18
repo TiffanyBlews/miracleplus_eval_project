@@ -3,6 +3,7 @@ import datasets from '../datasets';
 import PieChart from './PieChart';
 import MetricBar from './MetricBar';
 import OverviewSection from './OverviewSection';
+import StatsCards from './StatsCards';
 import { ArrowLeft, Award, CheckCircle, Target } from 'lucide-react';
 
 interface DatasetDetailPageProps {
@@ -70,6 +71,10 @@ export default function DatasetDetailPage({ datasetId, setSelectedDataset }: Dat
           </div>
         </div>
       </div>
+
+      {/* 统计数字卡片 */}
+      <StatsCards dataset={dataset} />
+
       {/* overview 能力分布 */}
       {overview && <OverviewSection overview={overview} />}
       {/* Data Visualization */}
