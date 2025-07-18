@@ -47,7 +47,7 @@ export default function PalindromeSearchPage({ setSelectedDataset }: { setSelect
       </div>
       <div className="overflow-x-auto mt-8">
         <h3 className="text-xl font-semibold mb-2">排行榜（微观/宏观平均）</h3>
-        <pre>{JSON.stringify(leaderboardData, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(leaderboardData, null, 2)}</pre> */}
         <table className="min-w-full border border-gray-200 rounded-lg">
           <thead className="bg-gray-100">
             <tr>
