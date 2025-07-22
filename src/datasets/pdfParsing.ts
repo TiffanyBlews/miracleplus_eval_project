@@ -2,14 +2,14 @@ import { Dataset } from '../types';
 
 export const pdfParsing: Dataset = {
   id: 'pdf-parsing',
-  name: 'PDF信息解析',
+  name: '文档智能PDF解析',
   description: '复杂PDF文档的信息提取和理解能力测试，涵盖表格、图表、多栏布局等复杂结构',
   category: 'agent',
   taskType: '文档理解',
   samples: 0,
   difficulty: '困难',
   metrics: ['结构化提取', '表格理解', '图文融合'],
-  detailedDescription: '即将发布的PDF信息解析数据集将包含3000+页复杂PDF文档，涵盖学术论文、财务报告、技术文档等多种类型。测试模型对复杂文档结构的理解能力，包括多栏布局、表格数据、图表信息、脚注引用等元素的准确提取和理解。',
+  detailedDescription: '即将发布的PDF信息解析数据集将包含3000+页复杂PDF文档，涵盖学术论文、财务报告、技术文档等多种类型。测试模型对复杂文档结构的理解能力，包括多栏布局、表格数据、公式、化学式、图表信息、脚注引用等元素的准确提取和理解。',
   keyFeatures: [
     '复杂文档结构',
     '多元素融合',
