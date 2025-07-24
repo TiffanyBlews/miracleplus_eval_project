@@ -115,10 +115,19 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">模型</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">公司</th>
                   <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">综合得分</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">平均耗时 (s)</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">总Token消耗</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {leaderboard.map((model: { model: string; provider: string; score: number }, index: number) => (
+                {leaderboard.map((model: { 
+                    model: string; 
+                    provider: string; 
+                    score: number;
+                    averageTime?: number;
+                    promptTokens?: number;
+                    completionTokens?: number;
+                }, index: number) => (
                   <tr key={model.model} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center">
@@ -142,6 +151,14 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
                       <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
                         {(model.score * 20).toFixed(0)}%
                       </div>
+                    </td>
+                    <td className="px-6 py-4 text-center text-sm text-gray-600">
+                      {model.averageTime?.toFixed(2) ?? 'N/A'}
+                    </td>
+                    <td className="px-6 py-4 text-center text-sm text-gray-600">
+                      {model.promptTokens && model.completionTokens
+                        ? `${model.promptTokens + model.completionTokens} (${model.promptTokens}+${model.completionTokens})`
+                        : 'N/A'}
                     </td>
                   </tr>
                 ))}
@@ -190,4 +207,4 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
       </div>
     </div>
   );
-} 
+}

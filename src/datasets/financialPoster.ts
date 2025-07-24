@@ -42,12 +42,12 @@ export const financialPoster: Dataset = {
   },
   detailedResults: {
     rankings: [
-      { model: 'Gemini 2.5 Pro', provider: 'Google', score: 4.597 },
-      { model: 'O4-mini-high', provider: 'OpenAI', score: 4.201 },
-      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', score: 4.000 },
-      { model: 'Claude Sonnet 4', provider: 'Anthropic', score: 3.617 },
-      { model: 'Qwen 2.5 VL', provider: 'Qwen', score: 3.519 },
-      { model: 'Grok-4', provider: 'xAI', score: 2.519 }
+      { model: 'Gemini 2.5 Pro', provider: 'Google', score: 4.597, averageTime: 58.33, promptTokens: 2331, completionTokens: 1801 },
+      { model: 'O4-mini-high', provider: 'OpenAI', score: 4.201, averageTime: 83.67, promptTokens: 2478, completionTokens: 2492 },
+      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', score: 4.000, averageTime: 18.07, promptTokens: 4666, completionTokens: 767 },
+      { model: 'Claude Sonnet 4', provider: 'Anthropic', score: 3.617, averageTime: 44.74, promptTokens: 1396, completionTokens: 216 },
+      { model: 'Qwen 2.5 VL', provider: 'Qwen', score: 3.519, averageTime: 54.17, promptTokens: 4644, completionTokens: 133 },
+      { model: 'Grok-4', provider: 'xAI', score: 2.519, averageTime: 84.48, promptTokens: 380, completionTokens: 4322 }
     ],
     taskPerformance: [
       { model: 'Gemini 2.5 Pro', provider: 'Google', choice: 4.94, openEnded: 4.24, fillBlank: 3.00 },
@@ -130,4 +130,4 @@ export const financialPosterCaseStudies: CaseStudy[] = [
     imageUrl: '/美股IPO表现.jpg',
     content: `任务 (task_id: 28): 按指定格式，提取海报中涨幅前三的股票和指数信息，并计算大盘指数变动情况。\n\n正确答案: \n市场表现速览（2025.01.02 - 2025.04.17）\n涨幅TOP3股票\nDiginex (DGNX.O): 涨幅：+2707%\n联掌门户 (LZMH.O): 涨幅：+128%\nKarman Holdings (KRMN.N): 涨幅：+58%\n同期大盘指数表现\n指数名称： 纳斯达克指数\n期间变动： -12.96% (由 20975.62点 下跌至 18258.09点)\n\nGrok-4 的回答: \n【分析主题】市场表现速览（4月以来）\n\n涨幅TOP3股票\n1. SMAN (SMAN):涨幅：+16%\n2. DOKO (DOKO):涨幅：+13.0%\n3. SFD (SFD):涨幅：+1.4%\n\n---\n同期大盘指数表现\n指数名称： OVR指数\n期间变动：+270.73%\n（由 497.62点 变化至 1825.80点）\n\n点评：模型完全未能完成问题要求的信息提取任务。它完全遵循了输出格式，但填充的所有数据——无论是股票名称、涨幅、指数名称还是点位变动——全部是凭空捏造的，与图片信息毫无关联。该回复不仅毫无价值，甚至可能产生严重误导。`
   }
-]; 
+];
