@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { financialPoster } from '../datasets/financialPoster';
 import PieChart from './PieChart';
 import MetricBar from './MetricBar';
@@ -6,7 +7,8 @@ import OverviewSection from './OverviewSection';
 import StatsCards from './StatsCards';
 import { ArrowLeft, Award, CheckCircle, Target } from 'lucide-react';
 
-export default function FinancialPosterPage({ setSelectedDataset }: { setSelectedDataset: (id: string | null) => void }) {
+export default function FinancialPosterPage() {
+  const navigate = useNavigate();
   const dataset = financialPoster;
   const leaderboard = dataset.detailedResults?.rankings || [];
   const caseStudies = dataset.focusAnalysis?.cases || [];
@@ -17,7 +19,7 @@ export default function FinancialPosterPage({ setSelectedDataset }: { setSelecte
       {/* Header */}
       <div className="flex items-center space-x-4">
         <button
-          onClick={() => setSelectedDataset(null)}
+          onClick={() => navigate(-1)}
           className="text-gray-500 hover:text-gray-700"
         >
           <ArrowLeft size={24} />

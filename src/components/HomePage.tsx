@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Brain, Zap } from 'lucide-react';
 
-export default function HomePage({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
+export default function HomePage() {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -14,13 +17,13 @@ export default function HomePage({ setActiveTab }: { setActiveTab: (tab: string)
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button 
-            onClick={() => setActiveTab('basic')}
+            onClick={() => navigate('/basic')}
             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             基础能力评测
           </button>
           <button 
-            onClick={() => setActiveTab('agent')}
+            onClick={() => navigate('/agent')}
             className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
           >
             Agent能力评测

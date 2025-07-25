@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import CategoryPage from './components/CategoryPage';
 import PalindromeSearchPage from './components/PalindromeSearchPage';
@@ -6,20 +7,19 @@ import FinancialPosterPage from './components/FinancialPosterPage';
 import PdfParsingPage from './components/PdfParsingPage';
 import { BarChart3, Brain, Zap, Menu, X } from 'lucide-react';
 
-function App() {
-  const [activeTab, setActiveTab] = useState('home');
-  const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
+// 主要的应用组件，包含导航和路由
+function AppContent() {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const NavItem = ({ id, label, icon: Icon }: { id: string; label: string; icon: React.ElementType }) => (
+  const NavItem = ({ path, label, icon: Icon }: { path: string; label: string; icon: React.ElementType }) => (
     <button
       onClick={() => {
-        setActiveTab(id);
-        setSelectedDataset(null);
+        navigate(path);
         setMobileMenuOpen(false);
       }}
       className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-        activeTab === id
+        window.location.pathname === path
           ? 'bg-blue-600 text-white shadow-lg'
           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
       }`}
@@ -62,27 +62,23 @@ function App() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-gray-200">
           <div className="px-4 py-2 space-y-1">
-            <NavItem id="home" label="首页" icon={BarChart3} />
-            <NavItem id="basic" label="基础能力" icon={Brain} />
-            <NavItem id="agent" label="Agent能力" icon={Zap} />
+            <NavItem path="/" label="首页" icon={BarChart3} />
+            <NavItem path="/basic" label="基础能力" icon={Brain} />
+            <NavItem path="/agent" label="Agent能力" icon={Zap} />
           </div>
         </div>
       )}
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {selectedDataset === 'palindrome-search' ? (
-          <PalindromeSearchPage setSelectedDataset={setSelectedDataset} />
-        ) : selectedDataset === 'financial-poster' ? (
-          <FinancialPosterPage setSelectedDataset={setSelectedDataset} />
-        ) : selectedDataset === 'pdf-parsing' ? (
-          <PdfParsingPage setSelectedDataset={setSelectedDataset} />
-        ) : activeTab === 'home' ? (
-          <HomePage setActiveTab={setActiveTab} />
-        ) : activeTab === 'basic' ? (
-          <CategoryPage category="basic" setSelectedDataset={setSelectedDataset} />
-        ) : activeTab === 'agent' ? (
-          <CategoryPage category="agent" setSelectedDataset={setSelectedDataset} />
-        ) : null}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/basic" element={<CategoryPage category="basic" />} />
+          <Route path="/agent" element={<CategoryPage category="agent" />} />
+          <Route path="/dataset/palindrome-search" element={<PalindromeSearchPage />} />
+          <Route path="/dataset/financial-poster" element={<FinancialPosterPage />} />
+          <Route path="/dataset/pdf-parsing" element={<PdfParsingPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-16">
@@ -124,6 +120,10 @@ function App() {
       </footer>
     </div>
   );
+}
+
+function App() {
+  return <AppContent />;
 }
 
 export default App;

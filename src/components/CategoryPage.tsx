@@ -1,13 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Brain, Zap } from 'lucide-react';
 import datasets from '../datasets';
 
 interface CategoryPageProps {
   category: 'basic' | 'agent';
-  setSelectedDataset: (id: string) => void;
 }
 
-export default function CategoryPage({ category, setSelectedDataset }: CategoryPageProps) {
+export default function CategoryPage({ category }: CategoryPageProps) {
+  const navigate = useNavigate();
   const categoryDatasets = datasets.filter(d => d.category === category);
   const categoryTitle = category === 'basic' ? '基础能力评测' : 'Agent能力评测';
   const categoryIcon = category === 'basic' ? Brain : Zap;
@@ -27,7 +28,7 @@ export default function CategoryPage({ category, setSelectedDataset }: CategoryP
           <div
             key={dataset.id}
             className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all duration-200 cursor-pointer"
-            onClick={() => setSelectedDataset(dataset.id)}
+            onClick={() => navigate(`/dataset/${dataset.id}`)}
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">{dataset.name}</h3>
