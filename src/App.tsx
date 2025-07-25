@@ -45,9 +45,9 @@ function AppContent() {
               </div>
             </div>
             <nav className="hidden md:flex space-x-2">
-              <NavItem id="home" label="首页" icon={BarChart3} />
-              <NavItem id="basic" label="基础能力" icon={Brain} />
-              <NavItem id="agent" label="Agent能力" icon={Zap} />
+              <NavItem path="/" label="首页" icon={BarChart3} />
+              <NavItem path="/basic" label="基础能力" icon={Brain} />
+              <NavItem path="/agent" label="Agent能力" icon={Zap} />
             </nav>
             <button
               className="md:hidden"
