@@ -87,7 +87,7 @@ export default function StringTasksPage() {
 
       {/* 排行榜 */}
       <div className="overflow-x-auto mt-8">
-        <h3 className="text-xl font-semibold mb-2">{stringTasks.find(task => task.id === activeTab)?.name} - 排行榜（微观/宏观平均）</h3>
+        <h3 className="text-xl font-semibold mb-2">{stringTasks.find(task => task.id === activeTab)?.name} - 排行榜（微观平均）</h3>
         <table className="min-w-full border border-gray-200 rounded-lg">
           <thead className="bg-gray-100">
             <tr>
@@ -95,8 +95,6 @@ export default function StringTasksPage() {
               <th className="px-4 py-2 text-left">模型</th>
               <th className="px-4 py-2 text-left">微观成功率</th>
               <th className="px-4 py-2 text-left">微观正确率</th>
-              <th className="px-4 py-2 text-left">宏观成功率</th>
-              <th className="px-4 py-2 text-left">宏观正确率</th>
             </tr>
           </thead>
           <tbody>
@@ -109,8 +107,6 @@ export default function StringTasksPage() {
                   <td className="px-4 py-2 font-medium">{item.model}</td>
                   <td className="px-4 py-2">{item.microSuccess.toFixed(2)}%</td>
                   <td className="px-4 py-2">{item.microCorrect.toFixed(2)}%</td>
-                  <td className="px-4 py-2">{item.macroSuccess.toFixed(2)}%</td>
-                  <td className="px-4 py-2">{item.macroCorrect.toFixed(2)}%</td>
                 </tr>
               ))}
           </tbody>
