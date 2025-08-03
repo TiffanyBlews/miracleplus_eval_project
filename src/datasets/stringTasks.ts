@@ -380,7 +380,7 @@ export const subsequenceLeaderboard = [
 export const palindromeRestoreLeaderboard = [
   {
     model: 'grok_4',
-    microSuccess: 18.75,
+    microSuccess: 37.50,
     microCorrect: 37.50,
     macroSuccess: 0,
     macroCorrect: 0,
