@@ -393,7 +393,7 @@ export const palindromeRestoreLeaderboard = [
     macroCorrect: 0,
   },
   {
-    model: 'gemini_1.5_pro',
+    model: 'gemini_2.5_pro',
     microSuccess: 70.00,
     microCorrect: 15.00,
     macroSuccess: 0,
@@ -414,7 +414,7 @@ export const palindromeRestoreLeaderboard = [
     macroCorrect: 0,
   },
   {
-    model: 'gemini_1.5_flash_lite',
+    model: 'gemini_2.5_flash_lite',
     microSuccess: 71.25,
     microCorrect: 2.50,
     macroSuccess: 0,
