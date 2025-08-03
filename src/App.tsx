@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import CategoryPage from './components/CategoryPage';
-import PalindromeSearchPage from './components/PalindromeSearchPage';
+import StringTasksPage from './components/PalindromeSearchPage';
 import FinancialPosterPage from './components/FinancialPosterPage';
 import PdfParsingPage from './components/PdfParsingPage';
 import { BarChart3, Brain, Zap, Menu, X } from 'lucide-react';
@@ -74,7 +74,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/basic" element={<CategoryPage category="basic" />} />
           <Route path="/agent" element={<CategoryPage category="agent" />} />
-          <Route path="/dataset/palindrome-search" element={<PalindromeSearchPage />} />
+          <Route path="/dataset/palindrome-search" element={<StringTasksPage />} />
           <Route path="/dataset/financial-poster" element={<FinancialPosterPage />} />
           <Route path="/dataset/pdf-parsing" element={<PdfParsingPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

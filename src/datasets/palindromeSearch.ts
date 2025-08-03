@@ -38,3 +38,75 @@ export const palindromeSearch = {
     performanceMetrics: []
   }
 }; 
+export const leaderboardData = [
+  {
+    model: 'qwen3_235b_a22b',
+    microSuccess: 42.81,
+    microCorrect: 12.04,
+    macroSuccess: 27.45,
+    macroCorrect: 3.92,
+  },
+  {
+    model: 'deepseek_chat_v3_0324',
+    microSuccess: 58.86,
+    microCorrect: 15.38,
+    macroSuccess: 31.37,
+    macroCorrect: 5.88,
+  },
+  {
+    model: 'gemini_2.5_pro',
+    microSuccess: 84.28,
+    microCorrect: 55.85,
+    macroSuccess: 76.47,
+    macroCorrect: 23.53,
+  },
+  {
+    model: 'claude_sonnet_4',
+    microSuccess: 86.29,
+    microCorrect: 14.38,
+    macroSuccess: 68.63,
+    macroCorrect: 1.96,
+  },
+  {
+    model: 'kimi_k2',
+    microSuccess: 80.94,
+    microCorrect: 20.40,
+    macroSuccess: 43.14,
+    macroCorrect: 5.88,
+  },
+  {
+    model: 'claude_opus_4',
+    microSuccess: 82.61,
+    microCorrect: 12.37,
+    macroSuccess: 66.67,
+    macroCorrect: 0.00,
+  },
+  {
+    model: 'gemini_2.5_flash_lite_preview_06_17',
+    microSuccess: 17.39,
+    microCorrect: 1.00,
+    macroSuccess: 9.80,
+    macroCorrect: 0.00,
+  },
+  {
+    model: 'grok_4',
+    microSuccess: 76.59,
+    microCorrect: 75.25,
+    macroSuccess: 74.51,
+    macroCorrect: 68.63,
+  },
+  {
+    model: 'qwen3_32b',
+    microSuccess: 15.05,
+    microCorrect: 5.02,
+    macroSuccess: 7.84,
+    macroCorrect: 1.96,
+  },
+  {
+    model: 'deepseek_r1_0528',
+    microSuccess: 21.40,
+    microCorrect: 19.06,
+    macroSuccess: 23.53,
+    macroCorrect: 19.61,
+  },
+]; 
