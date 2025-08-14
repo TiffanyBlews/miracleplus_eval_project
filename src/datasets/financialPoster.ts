@@ -43,24 +43,33 @@ export const financialPoster: Dataset = {
   detailedResults: {
     rankings: [
       { model: 'Gemini 2.5 Pro', provider: 'Google', score: 4.597, averageTime: 58.33, promptTokens: 2331, completionTokens: 1801 },
+      { model: 'GPT-5 Mini', provider: 'OpenAI', score: 4.353, averageTime: 0, promptTokens: 0, completionTokens: 0 },
+      { model: 'GLM-4.5v', provider: 'Zhipu AI', score: 4.297, averageTime: 0, promptTokens: 0, completionTokens: 0 },
       { model: 'O4-mini-high', provider: 'OpenAI', score: 4.201, averageTime: 83.67, promptTokens: 2478, completionTokens: 2492 },
-      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', score: 4.000, averageTime: 18.07, promptTokens: 4666, completionTokens: 767 },
+      { model: 'GLM-4.1v-thinking-flashx', provider: 'Zhipu AI', score: 4.000, averageTime: 18.07, promptTokens: 4666, completionTokens: 767 },
+      { model: 'GPT-5 Nano', provider: 'OpenAI', score: 3.827, averageTime: 0, promptTokens: 0, completionTokens: 0 },
+      { model: 'GPT-5 Chat', provider: 'OpenAI', score: 3.639, averageTime: 0, promptTokens: 0, completionTokens: 0 },
       { model: 'Claude Sonnet 4', provider: 'Anthropic', score: 3.617, averageTime: 44.74, promptTokens: 1396, completionTokens: 216 },
       { model: 'Qwen 2.5 VL', provider: 'Qwen', score: 3.519, averageTime: 54.17, promptTokens: 4644, completionTokens: 133 },
       { model: 'Grok-4', provider: 'xAI', score: 2.519, averageTime: 84.48, promptTokens: 380, completionTokens: 4322 }
     ],
     taskPerformance: [
-      { model: 'Gemini 2.5 Pro', provider: 'Google', choice: 4.94, openEnded: 4.24, fillBlank: 3.00 },
-      { model: 'O4-mini-high', provider: 'OpenAI', choice: 4.68, openEnded: 3.59, fillBlank: 3.00 },
-      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', choice: 4.55, openEnded: 3.43, fillBlank: 1.20 },
-      { model: 'Qwen 2.5 VL', provider: 'Qwen', choice: 3.97, openEnded: 3.09, fillBlank: 0.80 },
-      { model: 'Claude Sonnet 4', provider: 'Anthropic', choice: 3.95, openEnded: 3.28, fillBlank: 1.80 },
+      { model: 'Gemini 2.5 Pro', provider: 'Google', choice: 4.94, openEnded: 4.13, fillBlank: 3.00 },
+      { model: 'GPT-5 Mini', provider: 'OpenAI', choice: 4.81, openEnded: 3.74, fillBlank: 3.40 },
+      { model: 'GLM-4.5v', provider: 'Zhipu AI', choice: 4.81, openEnded: 3.77, fillBlank: 1.60 },
+      { model: 'O4-mini-high', provider: 'OpenAI', choice: 4.68, openEnded: 3.54, fillBlank: 3.00 },
+      { model: 'GLM-4.1v-thinking-flashx', provider: 'Zhipu AI', choice: 4.55, openEnded: 3.23, fillBlank: 1.20 },
+      { model: 'GPT-5 Nano', provider: 'OpenAI', choice: 4.23, openEnded: 3.42, fillBlank: 1.60 },
+      { model: 'GPT-5 Chat', provider: 'OpenAI', choice: 3.97, openEnded: 3.34, fillBlank: 1.40 },
+      { model: 'Claude Sonnet 4', provider: 'Anthropic', choice: 3.95, openEnded: 3.18, fillBlank: 1.00 },
+      { model: 'Qwen 2.5 VL', provider: 'Qwen', choice: 3.97, openEnded: 2.88, fillBlank: 0.80 },
       { model: 'Grok-4', provider: 'xAI', choice: 3.21, openEnded: 1.62, fillBlank: 0.80 }
     ],
     keyFindings: [
-      '全能冠军：Gemini 2.5 Pro 在所有题型中均表现出色，尤其在选择题上近乎满分，展现了其卓越的图文理解和推理能力',
-      '实力梯队：O4-mini 和 GLM-4.1v-thinking 紧随其后，在特定任务上表现稳健，证明了其强大的综合实力',
-      '开源之光：GLM-4.1v 和 Qwen 2.5 VL 作为开源模型的代表，性能优于某些知名闭源模型，展示了其在多模态理解领域的巨大潜力'
+      '全能冠军：Gemini 2.5 Pro 继续保持领先地位，在所有题型中均表现出色，尤其在选择题上近乎满分，展现了其卓越的图文理解和推理能力',
+      '新星崛起：GPT-5 Mini 和 GLM-4.5v 表现亮眼，分别位列第二、三名，展现了新一代模型的强大实力',
+      '实力梯队：O4-mini-high 和 GLM-4.1v-thinking-flashx 紧随其后，在特定任务上表现稳健，证明了其强大的综合实力',
+      '开源之光：GLM-4.5v 和 GLM-4.1v-thinking-flashx 作为开源模型的代表，性能优于某些知名闭源模型，展示了其在多模态理解领域的巨大潜力'
     ]
   },
   focusAnalysis: {
