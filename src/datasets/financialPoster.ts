@@ -43,33 +43,41 @@ export const financialPoster: Dataset = {
   detailedResults: {
     rankings: [
       { model: 'Gemini 2.5 Pro', provider: 'Google', score: 4.597, averageTime: 58.33, promptTokens: 2331, completionTokens: 1801 },
-      { model: 'GPT-5 Mini', provider: 'OpenAI', score: 4.353, averageTime: 0, promptTokens: 0, completionTokens: 0 },
+      { model: 'Qwen3-VL-235B-A22B-Thinking', provider: 'Qwen', score: 4.515, averageTime: 26.61, promptTokens: 3076, completionTokens: 993 },
       { model: 'GLM-4.5v', provider: 'Zhipu AI', score: 4.297, averageTime: 0, promptTokens: 0, completionTokens: 0 },
+      { model: 'GPT-5', provider: 'OpenAI', score: 4.233, averageTime: 30.20, promptTokens: 1045, completionTokens: 1472 },
       { model: 'O4-mini-high', provider: 'OpenAI', score: 4.201, averageTime: 83.67, promptTokens: 2478, completionTokens: 2492 },
-      { model: 'GLM-4.1v-thinking-flashx', provider: 'Zhipu AI', score: 4.000, averageTime: 18.07, promptTokens: 4666, completionTokens: 767 },
+      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', score: 4.000, averageTime: 18.07, promptTokens: 4666, completionTokens: 767 },
+      { model: 'Claude Opus 4.1', provider: 'Anthropic', score: 3.976, averageTime: 14.75, promptTokens: 1410, completionTokens: 310 },
       { model: 'GPT-5 Nano', provider: 'OpenAI', score: 3.827, averageTime: 0, promptTokens: 0, completionTokens: 0 },
       { model: 'GPT-5 Chat', provider: 'OpenAI', score: 3.639, averageTime: 0, promptTokens: 0, completionTokens: 0 },
       { model: 'Claude Sonnet 4', provider: 'Anthropic', score: 3.617, averageTime: 44.74, promptTokens: 1396, completionTokens: 216 },
       { model: 'Qwen 2.5 VL', provider: 'Qwen', score: 3.519, averageTime: 54.17, promptTokens: 4644, completionTokens: 133 },
+      { model: 'Grok-4 Fast', provider: 'xAI', score: 2.754, averageTime: 22.10, promptTokens: 489, completionTokens: 1829 },
       { model: 'Grok-4', provider: 'xAI', score: 2.519, averageTime: 84.48, promptTokens: 380, completionTokens: 4322 }
     ],
     taskPerformance: [
       { model: 'Gemini 2.5 Pro', provider: 'Google', choice: 4.94, openEnded: 4.13, fillBlank: 3.00 },
-      { model: 'GPT-5 Mini', provider: 'OpenAI', choice: 4.81, openEnded: 3.74, fillBlank: 3.40 },
+      { model: 'Qwen3-VL-235B-A22B-Thinking', provider: 'Qwen', choice: 4.74, openEnded: 4.29, fillBlank: 3.20 },
       { model: 'GLM-4.5v', provider: 'Zhipu AI', choice: 4.81, openEnded: 3.77, fillBlank: 1.60 },
+      { model: 'GPT-5', provider: 'OpenAI', choice: 4.74, openEnded: 3.58, fillBlank: 2.80 },
       { model: 'O4-mini-high', provider: 'OpenAI', choice: 4.68, openEnded: 3.54, fillBlank: 3.00 },
-      { model: 'GLM-4.1v-thinking-flashx', provider: 'Zhipu AI', choice: 4.55, openEnded: 3.23, fillBlank: 1.20 },
+      { model: 'GLM-4.1v-thinking', provider: 'Zhipu AI', choice: 4.55, openEnded: 3.23, fillBlank: 1.20 },
+      { model: 'Claude Opus 4.1', provider: 'Anthropic', choice: 4.41, openEnded: 3.52, fillBlank: 1.60 },
       { model: 'GPT-5 Nano', provider: 'OpenAI', choice: 4.23, openEnded: 3.42, fillBlank: 1.60 },
       { model: 'GPT-5 Chat', provider: 'OpenAI', choice: 3.97, openEnded: 3.34, fillBlank: 1.40 },
       { model: 'Claude Sonnet 4', provider: 'Anthropic', choice: 3.95, openEnded: 3.18, fillBlank: 1.00 },
       { model: 'Qwen 2.5 VL', provider: 'Qwen', choice: 3.97, openEnded: 2.88, fillBlank: 0.80 },
+      { model: 'Grok-4 Fast', provider: 'xAI', choice: 3.38, openEnded: 1.97, fillBlank: 1.00 },
       { model: 'Grok-4', provider: 'xAI', choice: 3.21, openEnded: 1.62, fillBlank: 0.80 }
     ],
     keyFindings: [
       '全能冠军：Gemini 2.5 Pro 继续保持领先地位，在所有题型中均表现出色，尤其在选择题上近乎满分，展现了其卓越的图文理解和推理能力',
-      '新星崛起：GPT-5 Mini 和 GLM-4.5v 表现亮眼，分别位列第二、三名，展现了新一代模型的强大实力',
-      '实力梯队：O4-mini-high 和 GLM-4.1v-thinking-flashx 紧随其后，在特定任务上表现稳健，证明了其强大的综合实力',
-      '开源之光：GLM-4.5v 和 GLM-4.1v-thinking-flashx 作为开源模型的代表，性能优于某些知名闭源模型，展示了其在多模态理解领域的巨大潜力'
+      '开源新星：Qwen3-VL-235B-A22B-Thinking 异军突起，以4.515分位列第二，在开放性问题表现尤为突出，展现了开源模型在多模态推理领域的巨大潜力',
+      'GPT系列强势：GPT-5 位列第三位，展现了OpenAI在金融多模态推理领域的持续领先优势',
+      'GLM系列稳定：GLM-4.5v 作为国产开源模型代表，性能稳定，在选择题任务上表现优异',
+      'Claude系列稳健：Claude Opus 4.1 和 Claude Sonnet 4 在综合表现上保持稳定，展现了Anthropic在推理能力上的优势',
+      'Grok系列挑战：Grok-4 和 Grok-4 Fast 在金融多模态推理任务上仍面临挑战，存在事实性错误和内容幻觉问题，需要进一步优化'
     ]
   },
   focusAnalysis: {
